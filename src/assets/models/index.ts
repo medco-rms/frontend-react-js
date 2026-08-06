@@ -1,5 +1,4 @@
 export type UserRole =
-  | "PATIENT"
   | "DOCTOR"
   | "TECHNICIAN"
   | "PHARMACIST"
