@@ -28,7 +28,7 @@ const App = () => {
           collapsed: collapsed,
         },
       }}
-      mainContainerClassName=" rounded-md! p-4! bg-gray-50!"
+      mainContainerClassName=" rounded-md! p-0! bg-gray-50!"
     />
   );
 };

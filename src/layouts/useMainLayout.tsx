@@ -40,9 +40,9 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       icon: ({ iconColor }: { iconColor: string }) => (
         <Icon icon="mdi:users" color={iconColor} width={30} height={30} />
       ),
-      label: "System Users",
-      path: "/admin/users",
-      role: "user",
+      label: "Doctors",
+      path: "/admin/doctor",
+      role: "doctor",
     },
 
     {
@@ -57,12 +57,32 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
     },
   ];
 
-  const getPageContent = (key: string[]): HeaderProps => {
-    if (key.includes("/admin/dashboard")) {
+  const getPageContent = (value?: unknown): HeaderProps => {
+    const firstValue = Array.isArray(value) ? value[0] : value;
+
+    if (typeof firstValue !== "string" || !firstValue.trim()) {
+      return {
+        pageTitle: "",
+        pageTitleDescription: "",
+      };
+    }
+
+    const paths = firstValue.split("/");
+
+    if (paths.includes("dashboard")) {
       return {
         pageTitle: "Welcome, " + userData?.name,
         pageTitleDescription: "Overview of your account and recent activities",
         key: "1",
+      };
+    }
+
+    if (paths.includes("doctor")) {
+      return {
+        pageTitle: "Doctor Management",
+        pageTitleDescription:
+          "Create a new doctor account and manage their information",
+        key: "2",
       };
     }
 

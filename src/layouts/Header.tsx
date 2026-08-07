@@ -19,7 +19,7 @@ const Header = ({}: HeaderProps) => {
 
   const location = useLocation();
   const { getPageContent } = useMainLayout({});
-  const currentPage: HeaderProps = getPageContent([location.pathname]);
+  const currentPage: HeaderProps = getPageContent(location.pathname);
 
   const { userData } = useContext(UserContext);
 
