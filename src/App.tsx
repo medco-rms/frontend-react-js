@@ -1,12 +1,22 @@
-import { AppRoute } from "react-project-scaffold-ts";
+import { AppRoute, UtilContext } from "react-project-scaffold-ts";
 import SideBar from "./layouts/sidebar";
 import { Index } from "./layouts/routes";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Header } from "./layouts/Header";
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const { setAPIConfig } = useContext(UtilContext);
 
+  // Set API Config for the application
+  useEffect(() => {
+    setAPIConfig({
+      endpoint: "http://localhost:3000",
+      type: "GRAPHQL",
+      token: "",
+    });
+  }, [setAPIConfig]);
+  
   return (
     <AppRoute
       routes={Index}
