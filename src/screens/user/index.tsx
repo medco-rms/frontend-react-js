@@ -58,7 +58,7 @@ const Index = ({ role }: { role: UserRole }) => {
     <>
       <Table
         columns={getTableColumns({
-          onClick: (user: User) => {},
+          onClick: () => {},
           role,
         })}
         searchByCols={["firstName", "MiddleName", "email", "phone"]}

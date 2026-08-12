@@ -26,7 +26,7 @@ const App = () => {
       }}
       defaultAdminSideBar={{
         classNames: "bg-white! shadow-md! border-r-2! border-gray-200!",
-        content: <SideBar onCollapsed={setCollapsed} onSelect={(item) => {}} />,
+        content: <SideBar onCollapsed={setCollapsed} onSelect={() => {}} />,
         props: {
           collapsed: collapsed,
         },

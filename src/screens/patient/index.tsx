@@ -1,4 +1,3 @@
-import type { Patient } from "@/assets/models";
 import { Table } from "react-project-scaffold-ts";
 import { PATIENTS_QUERY } from "./gql";
 import { usePatient } from "./usePatient";
@@ -10,7 +9,7 @@ const Index = () => {
     <>
       <Table
         columns={getTableColumns({
-          onClick: (patient: Patient) => {},
+          onClick: () => {},
         })}
         searchByCols={["firstName", "Middlename", "phone", "nationalID"]}
         searchInputPlaceholderText={
@@ -23,8 +22,8 @@ const Index = () => {
         showAddButton={true}
         addButtonTitle={`Create new Patient`}
         actionPrevilage={{
-          edit: true,
-          delete: true,
+          edit: {show: true},
+          delete: {show: true},
         }}
         name={{
           getData: "patients",

@@ -1,6 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useState, useRef, useEffect, useContext } from "react";
-import { UserContext } from "react-project-scaffold-ts";
+import { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useMainLayout } from "./useMainLayout";
 
@@ -21,7 +20,6 @@ const Header = ({}: HeaderProps) => {
   const { getPageContent } = useMainLayout({});
   const currentPage: HeaderProps = getPageContent(location.pathname);
 
-  const { userData } = useContext(UserContext);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
