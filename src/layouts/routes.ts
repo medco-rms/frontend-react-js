@@ -6,6 +6,7 @@ const Users = lazy(() => import("@/screens/user"));
 const UserForm = lazy(() => import("@/screens/user/form"));
 const Patients = lazy(() => import("@/screens/patient"));
 const PatientForm = lazy(() => import("@/screens/patient/form"));
+const Departments = lazy(() => import("@/screens/department/index"));
 
 export const Index = [
   {
@@ -75,5 +76,9 @@ export const Index = [
   {
     path: "staff/index",
     element: createElement(Users, { role: "STAFF" }),
+  },
+  {
+    path: "department/index",
+    element: createElement(Departments),
   },
 ];
