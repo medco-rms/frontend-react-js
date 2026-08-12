@@ -7,6 +7,9 @@ import {
   QueryProvider,
   UserProvider,
   UtilProvider,
+  Drawer,
+  CMProvider,
+  ConfirmationModal,
 } from "react-project-scaffold-ts";
 
 createRoot(document.getElementById("root")!).render(
@@ -24,7 +27,11 @@ createRoot(document.getElementById("root")!).render(
       <UtilProvider>
         <UserProvider>
           <QueryProvider>
-            <App />
+            <CMProvider>
+              <Drawer />
+              <ConfirmationModal />
+              <App />
+            </CMProvider>
           </QueryProvider>
         </UserProvider>
       </UtilProvider>

@@ -38,15 +38,79 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
     {
       key: "2",
       icon: ({ iconColor }: { iconColor: string }) => (
-        <Icon icon="mdi:users" color={iconColor} width={30} height={30} />
+        <Icon
+          icon="healthicons:doctor-24px"
+          color={iconColor}
+          width={30}
+          height={30}
+        />
       ),
-      label: "System Users",
-      path: "/admin/users",
-      role: "user",
+      label: "Doctors",
+      path: "/admin/doctor/index",
+      role: "doctor",
     },
-
+    {
+      key: "3",
+      icon: ({ iconColor }: { iconColor: string }) => (
+        <Icon
+          icon="healthicons:nurse"
+          color={iconColor}
+          width={30}
+          height={30}
+        />
+      ),
+      label: "Nurses",
+      path: "/admin/nurse/index",
+      role: "nurse",
+    },
+    {
+      key: "4",
+      icon: ({ iconColor }: { iconColor: string }) => (
+        <Icon
+          icon="icomoon-free:lab"
+          color={iconColor}
+          width={30}
+          height={30}
+        />
+      ),
+      label: "Technicians",
+      path: "/admin/technician/index",
+      role: "technician",
+    },
+    {
+      key: "5",
+      icon: ({ iconColor }: { iconColor: string }) => (
+        <Icon
+          icon="glyphs:pharmacy-bold"
+          color={iconColor}
+          width={30}
+          height={30}
+        />
+      ),
+      label: "Pharmacists",
+      path: "/admin/pharmacist/index",
+      role: "pharmacist",
+    },
+    {
+      key: "6",
+      icon: ({ iconColor }: { iconColor: string }) => (
+        <Icon icon="mdi:patient" color={iconColor} width={30} height={30} />
+      ),
+      label: "Patients",
+      path: "/admin/patient/index",
+      role: "patient",
+    },
     {
       key: "7",
+      icon: ({ iconColor }: { iconColor: string }) => (
+        <Icon icon="mdi:users" color={iconColor} width={30} height={30} />
+      ),
+      label: "Staffs",
+      path: "/admin/staff/index",
+      role: "staff",
+    },
+    {
+      key: "8",
       icon: ({ iconColor }: { iconColor: string }) => (
         <Icon icon="mdi:settings" width={30} height={30} color={iconColor} />
       ),
@@ -57,12 +121,59 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
     },
   ];
 
-  const getPageContent = (key: string[]): HeaderProps => {
-    if (key.includes("/admin/dashboard")) {
+  const getPageContent = (value?: unknown): HeaderProps => {
+    const firstValue = Array.isArray(value) ? value[0] : value;
+
+    if (typeof firstValue !== "string" || !firstValue.trim()) {
+      return {
+        pageTitle: "",
+        pageTitleDescription: "",
+      };
+    }
+
+    const paths = firstValue.split("/");
+
+    if (paths.includes("dashboard")) {
       return {
         pageTitle: "Welcome, " + userData?.name,
         pageTitleDescription: "Overview of your account and recent activities",
         key: "1",
+      };
+    }
+
+    if (paths.includes("doctor")) {
+      return {
+        pageTitle: "Doctor Management",
+        pageTitleDescription:
+          "Create a new doctor account and manage their information",
+        key: "2",
+      };
+    }
+
+    if (paths.includes("nurse")) {
+      return {
+        pageTitle: "Nurse Management",
+        pageTitleDescription:
+          "Create a new nurse account and manage their information",
+        key: "3",
+      };
+    }
+
+    if (paths.includes("technician")) {
+      return {
+        pageTitle: "Technician Management",
+        pageTitleDescription:
+          "Create a new Lab & X-Ray technician account and manage their information",
+        key: "4",
+      };
+    }
+
+    if (paths.includes("pharmacist")) {
+      return {
+        pageTitle: "Pharmacist Management",
+        pageTitleDescription:
+          "Create a new pharmacist account and manage their information",
+        key: "5",
       };
     }
 

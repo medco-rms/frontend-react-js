@@ -39,7 +39,7 @@ const SideBar = ({
   });
 
   const [collapsed, setCollapsed] = useState(false);
-  const currentPage: HeaderProps = getPageContent([location.pathname]);
+  const currentPage: HeaderProps = getPageContent(location.pathname);
 
   const row = (item: MenuItem, className: string) => {
     return (

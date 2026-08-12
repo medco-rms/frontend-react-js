@@ -16,7 +16,7 @@ const App = () => {
       token: "",
     });
   }, [setAPIConfig]);
-  
+
   return (
     <AppRoute
       routes={Index}
@@ -26,19 +26,12 @@ const App = () => {
       }}
       defaultAdminSideBar={{
         classNames: "bg-white! shadow-md! border-r-2! border-gray-200!",
-        content: (
-          <SideBar
-            onCollapsed={setCollapsed}
-            onSelect={(item) => {
-              console.log("%csrc/App.tsx:26 item", "color: #007acc;", item);
-            }}
-          />
-        ),
+        content: <SideBar onCollapsed={setCollapsed} onSelect={(item) => {}} />,
         props: {
           collapsed: collapsed,
         },
       }}
-      mainContainerClassName=" rounded-md! p-4! bg-gray-50!"
+      mainContainerClassName=" rounded-md! p-0! bg-gray-50!"
     />
   );
 };

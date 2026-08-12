@@ -22,13 +22,14 @@ export type testRequestStatus =
   | "COMPLETED";
 export type prescriptionStatus = "PENDING" | "PROCESSING" | "COMPLETED";
 export type medicalDocumentType = "REPORT" | "IMAGE" | "REFERRAL" | "OTHER";
+export type StatusType = "DELETED" | "SUSPENDED" | "ACTIVE";
 
 export interface User {
-  id: string;
+  id?: string;
   // Personal Information
-  firstName: string;
+  firstName?: string;
   middleName?: string;
-  lastName: string;
+  lastName?: string;
   gender?: Gender;
   dateOfBirth?: Date;
 
@@ -36,14 +37,14 @@ export interface User {
 
   // Contact Information
   email?: string;
-  phone: string;
+  phone?: string;
   alternativePhone?: string;
   address?: string;
 
   // Role & Organization
-  role: UserRole;
+  role?: UserRole;
   departmentId?: string;
-  employeeId?: string;
+  employeeId?: number;
 
   // Professional Information
   specialization?: string;
@@ -54,14 +55,11 @@ export interface User {
   experienceYears?: number;
   joiningDate?: Date;
 
-  // Emergency / Personal Info
-  emergencyContactName?: string;
-  emergencyContactPhone?: string;
-
   note?: string;
+  status?: StatusType;
 
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface Patient {
@@ -69,7 +67,7 @@ export interface Patient {
 
   cardNumber: string;
   firstName: string;
-  lastName: string;
+  middleName: string;
 
   gender: Gender;
   dateOfBirth: Date;
@@ -82,6 +80,13 @@ export interface Patient {
   // Emergency / Personal Info
   emergencyContactName?: string;
   emergencyContactPhone?: string;
+
+  // social seurity number, (FAYDA), etc.
+  nationalID?: string;
+
+  // card number expiry date
+  cardNumberExpiryDate: Date;
+  status?: StatusType;
 
   createdAt: Date;
   updatedAt: Date;
