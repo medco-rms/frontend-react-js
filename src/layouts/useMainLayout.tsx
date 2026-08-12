@@ -107,10 +107,24 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       ),
       label: "Staffs",
       path: "/admin/staff/index",
-      role: "staff",
+      role: "admin",
     },
     {
       key: "8",
+      icon: ({ iconColor }: { iconColor: string }) => (
+        <Icon
+          icon="mingcute:department-fill"
+          color={iconColor}
+          width={30}
+          height={30}
+        />
+      ),
+      label: "Department",
+      path: "/admin/department/index",
+      role: "admin",
+    },
+    {
+      key: "",
       icon: ({ iconColor }: { iconColor: string }) => (
         <Icon icon="mdi:settings" width={30} height={30} color={iconColor} />
       ),
@@ -192,6 +206,15 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         pageTitleDescription:
           "Create a new local staff account and manage their information",
         key: "7",
+      };
+    }
+
+    if (paths.includes("department")) {
+      return {
+        pageTitle: "Department Management",
+        pageTitleDescription:
+          "Create a new local department and manage their information",
+        key: "8",
       };
     }
 
