@@ -177,6 +177,24 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
+    if (paths.includes("patient")) {
+      return {
+        pageTitle: "Patient Management",
+        pageTitleDescription:
+          "Create a new patient and manage their information",
+        key: "6",
+      };
+    }
+
+    if (paths.includes("staff")) {
+      return {
+        pageTitle: "Staff Management",
+        pageTitleDescription:
+          "Create a new local staff account and manage their information",
+        key: "7",
+      };
+    }
+
     return {
       pageTitle: "",
       pageTitleDescription: "",
