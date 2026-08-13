@@ -124,6 +124,20 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       role: "admin",
     },
     {
+      key: "9",
+      icon: ({ iconColor }: { iconColor: string }) => (
+        <Icon
+          icon="ic:round-meeting-room"
+          color={iconColor}
+          width={30}
+          height={30}
+        />
+      ),
+      label: "Room",
+      path: "/admin/room/index",
+      role: "admin",
+    },
+    {
       key: "",
       icon: ({ iconColor }: { iconColor: string }) => (
         <Icon icon="mdi:settings" width={30} height={30} color={iconColor} />
@@ -215,6 +229,15 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         pageTitleDescription:
           "Create a new local department and manage their information",
         key: "8",
+      };
+    }
+
+    if (paths.includes("room")) {
+      return {
+        pageTitle: "Room Management",
+        pageTitleDescription:
+          "Create a new local room and manage their information",
+        key: "9",
       };
     }
 
