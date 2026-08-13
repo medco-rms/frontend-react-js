@@ -67,7 +67,7 @@ const Index = ({ role }: { role: UserRole }) => {
         }
         route={{
           api: USERS_QUERY(roleAlias),
-          page: `/admin/${role.toLowerCase()}`,
+          page: `/admin/${role.toLowerCase()}s`,
         }}
         queryParams={{ role: role ?? "DOCTOR" }}
         showAddButton={true}

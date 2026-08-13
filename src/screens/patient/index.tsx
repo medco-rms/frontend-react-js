@@ -17,7 +17,7 @@ const Index = () => {
         }
         route={{
           api: PATIENTS_QUERY,
-          page: `/admin/patient`,
+          page: `/admin/patients`,
         }}
         showAddButton={true}
         addButtonTitle={`Create new Patient`}

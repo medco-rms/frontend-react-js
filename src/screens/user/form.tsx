@@ -46,7 +46,7 @@ const Index = ({ role }: { role: UserRole }) => {
         columns={2}
         fields={getFormFields({ image, includeId: id ? true : false, role })}
         title={id ? `Edit ${roleLabel}` : `Create new ${roleLabel}`}
-        backTo={`/admin/${role.toLowerCase()}/index`}
+        backTo={`/admin/${role.toLowerCase()}s`}
         apiRoute={USER_MUTATION(!id)}
         payloadExtraData={{
           role: normalizedRole,
@@ -104,7 +104,7 @@ export const StaffForm = ({
           role: "STAFF",
         })}
         title={id ? `Edit Staff` : `Create new Staff`}
-        backTo="/admin/staff/index"
+        backTo="/admin/staffs"
         apiRoute={USER_MUTATION(!id)}
         payloadExtraData={{
           role: "STAFF",
