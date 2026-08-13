@@ -6,7 +6,12 @@ export type UserRole =
   | "FRONT_DESK"
   | "STAFF";
 export type Gender = "MALE" | "FEMALE" | "OTHER";
-export type DepartmentType = "EXAMINATION" | "LAB" | "SCAN" | "PHARMACY" | "OTHER";
+export type DepartmentType =
+  | "EXAMINATION"
+  | "LAB"
+  | "SCAN"
+  | "PHARMACY"
+  | "OTHER";
 export type TestType = "LAB" | "SCAN";
 export type roomStatus = "AVAILABLE" | "BUSY";
 export type appointmentStatus =
@@ -110,6 +115,7 @@ export interface Room {
   capacity?: number;
 
   status: roomStatus;
+  createdAt: Date;
 }
 
 export interface Appointment {

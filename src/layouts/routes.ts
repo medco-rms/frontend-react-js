@@ -1,3 +1,5 @@
+import { DEPARTMENTS_QUERY } from "@/screens/department/gql";
+import { ROOMS_QUERY } from "@/screens/room/gql";
 import { lazy } from "react";
 import { createElement } from "react";
 
@@ -6,7 +8,7 @@ const Users = lazy(() => import("@/screens/user"));
 const UserForm = lazy(() => import("@/screens/user/form"));
 const Patients = lazy(() => import("@/screens/patient"));
 const PatientForm = lazy(() => import("@/screens/patient/form"));
-const Departments = lazy(() => import("@/screens/department/index"));
+const SharedList = lazy(() => import("@/screens/shared/index"));
 
 export const Index = [
   {
@@ -79,6 +81,34 @@ export const Index = [
   },
   {
     path: "department/index",
-    element: createElement(Departments),
+    element: createElement(SharedList, {
+      searchByCols: ["name", "type"],
+      searchInputPlaceholderText: "Search by name & type",
+      names: {
+        getData: "departments",
+        deleteData: "Department",
+        popupLabel: "Department",
+      },
+      route: {
+        api: DEPARTMENTS_QUERY(),
+      },
+      type: "dep",
+    }),
+  },
+  {
+    path: "room/index",
+    element: createElement(SharedList, {
+      searchByCols: ["name", "capacity", "status"],
+      searchInputPlaceholderText: "Search by name, capacity & status",
+      names: {
+        getData: "rooms",
+        deleteData: "Room",
+        popupLabel: "Room",
+      },
+      route: {
+        api: ROOMS_QUERY(),
+      },
+      type: "room",
+    }),
   },
 ];
