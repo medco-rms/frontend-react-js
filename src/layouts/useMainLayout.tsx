@@ -46,7 +46,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         />
       ),
       label: "Doctors",
-      path: "/admin/doctor/index",
+      path: "/admin/doctors",
       role: "doctor",
     },
     {
@@ -60,7 +60,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         />
       ),
       label: "Nurses",
-      path: "/admin/nurse/index",
+      path: "/admin/nurses",
       role: "nurse",
     },
     {
@@ -74,7 +74,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         />
       ),
       label: "Technicians",
-      path: "/admin/technician/index",
+      path: "/admin/technicians",
       role: "technician",
     },
     {
@@ -88,7 +88,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         />
       ),
       label: "Pharmacists",
-      path: "/admin/pharmacist/index",
+      path: "/admin/pharmacists",
       role: "pharmacist",
     },
     {
@@ -97,7 +97,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         <Icon icon="mdi:patient" color={iconColor} width={30} height={30} />
       ),
       label: "Patients",
-      path: "/admin/patient/index",
+      path: "/admin/patients",
       role: "patient",
     },
     {
@@ -106,7 +106,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         <Icon icon="mdi:users" color={iconColor} width={30} height={30} />
       ),
       label: "Staffs",
-      path: "/admin/staff/index",
+      path: "/admin/staffs",
       role: "admin",
     },
     {
@@ -120,7 +120,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         />
       ),
       label: "Department",
-      path: "/admin/department/index",
+      path: "/admin/departments",
       role: "admin",
     },
     {
@@ -134,7 +134,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
         />
       ),
       label: "Room",
-      path: "/admin/room/index",
+      path: "/admin/rooms",
       role: "admin",
     },
     {
@@ -169,7 +169,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("doctor")) {
+    if (paths.includes("doctors")) {
       return {
         pageTitle: "Doctor Management",
         pageTitleDescription:
@@ -178,7 +178,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("nurse")) {
+    if (paths.includes("nurses")) {
       return {
         pageTitle: "Nurse Management",
         pageTitleDescription:
@@ -187,7 +187,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("technician")) {
+    if (paths.includes("technicians")) {
       return {
         pageTitle: "Technician Management",
         pageTitleDescription:
@@ -196,7 +196,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("pharmacist")) {
+    if (paths.includes("pharmacists")) {
       return {
         pageTitle: "Pharmacist Management",
         pageTitleDescription:
@@ -205,7 +205,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("patient")) {
+    if (paths.includes("patients")) {
       return {
         pageTitle: "Patient Management",
         pageTitleDescription:
@@ -214,7 +214,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("staff")) {
+    if (paths.includes("staffs")) {
       return {
         pageTitle: "Staff Management",
         pageTitleDescription:
@@ -223,7 +223,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("department")) {
+    if (paths.includes("departments")) {
       return {
         pageTitle: "Department Management",
         pageTitleDescription:
@@ -232,7 +232,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
       };
     }
 
-    if (paths.includes("room")) {
+    if (paths.includes("rooms")) {
       return {
         pageTitle: "Room Management",
         pageTitleDescription:

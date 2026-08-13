@@ -16,71 +16,71 @@ export const Index = [
     element: createElement(Dashboard),
   },
   {
-    path: "doctor/index",
+    path: "doctors",
     element: createElement(Users, { role: "DOCTOR" }),
   },
   {
-    path: "doctor/new",
+    path: "doctors/new",
     element: createElement(UserForm, { role: "DOCTOR" }),
   },
   {
-    path: "doctor/:id/update",
+    path: "doctors/:id/update",
     element: createElement(UserForm, { role: "DOCTOR" }),
   },
   {
-    path: "nurse/index",
+    path: "nurses",
     element: createElement(Users, { role: "NURSE" }),
   },
   {
-    path: "nurse/new",
+    path: "nurses/new",
     element: createElement(UserForm, { role: "NURSE" }),
   },
   {
-    path: "nurse/:id/update",
+    path: "nurses/:id/update",
     element: createElement(UserForm, { role: "NURSE" }),
   },
   {
-    path: "technician/index",
+    path: "technicians",
     element: createElement(Users, { role: "TECHNICIAN" }),
   },
   {
-    path: "technician/new",
+    path: "technicians/new",
     element: createElement(UserForm, { role: "TECHNICIAN" }),
   },
   {
-    path: "technician/:id/update",
+    path: "technicians/:id/update",
     element: createElement(UserForm, { role: "TECHNICIAN" }),
   },
   {
-    path: "pharmacist/index",
+    path: "pharmacists",
     element: createElement(Users, { role: "PHARMACIST" }),
   },
   {
-    path: "pharmacist/new",
+    path: "pharmacists/new",
     element: createElement(UserForm, { role: "PHARMACIST" }),
   },
   {
-    path: "pharmacist/:id/update",
+    path: "pharmacists/:id/update",
     element: createElement(UserForm, { role: "PHARMACIST" }),
   },
   {
-    path: "patient/index",
+    path: "patients",
     element: createElement(Patients),
   },
   {
-    path: "patient/new",
+    path: "patients/new",
     element: createElement(PatientForm),
   },
   {
-    path: "patient/:id/update",
+    path: "patients/:id/update",
     element: createElement(PatientForm),
   },
   {
-    path: "staff/index",
+    path: "staffs",
     element: createElement(Users, { role: "STAFF" }),
   },
   {
-    path: "department/index",
+    path: "departments",
     element: createElement(SharedList, {
       searchByCols: ["name", "type"],
       searchInputPlaceholderText: "Search by name & type",
@@ -96,7 +96,7 @@ export const Index = [
     }),
   },
   {
-    path: "room/index",
+    path: "rooms",
     element: createElement(SharedList, {
       searchByCols: ["name", "capacity", "status"],
       searchInputPlaceholderText: "Search by name, capacity & status",

@@ -43,7 +43,7 @@ const Index = () => {
         columns={2}
         fields={getFormFields({})}
         title={id ? `Edit Patient` : `Create new Patient`}
-        backTo="/admin/patient/index"
+        backTo="/admin/patients"
         apiRoute={PATIENT_MUTATION(!id)}
         payloadExtraData={{
           cardNumberExpiryDate: defaultCardExpiryDate,
