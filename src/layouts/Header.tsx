@@ -1,14 +1,16 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { useContext, type ReactElement } from "react";
+import { useContext, useState, type ReactElement } from "react";
 import { useLocation } from "react-router-dom";
 import { useMainLayout } from "./useMainLayout";
 import {
+  ChangePassword,
   CMContext,
   useAuthClient,
+  UtilContext,
   type CMPropsType,
 } from "react-project-scaffold-ts";
 import toast from "react-hot-toast";
-import { Popover } from "antd";
+import { Button, Form, Popover } from "antd";
 
 export type HeaderProps = {
   pageTitle?: string;
@@ -22,7 +24,11 @@ const Header = ({}: HeaderProps) => {
   const { getPageContent } = useMainLayout({});
   const currentPage: HeaderProps = getPageContent(location.pathname);
   const { setConfirmationModalProps: setcmProps } = useContext(CMContext);
+  const { setDrawerProps } = useContext(UtilContext);
+  const [loading, setLoading] = useState(false);
+
   const authClient = useAuthClient();
+  const [form] = Form.useForm();
 
   const Logout = async ({
     onRequest,
@@ -64,6 +70,90 @@ const Header = ({}: HeaderProps) => {
     }));
   };
 
+  const handleChangePassword = async () => {
+    form.resetFields();
+    setDrawerProps((prev) => ({
+      ...prev,
+      open: true,
+      title: "Change Password",
+      width: 450,
+      children: <ChangePassword form={form} onLoading={setLoading} />,
+      footer: (
+        <Button
+          type="primary"
+          className="w-full h-10!"
+          onClick={() => {
+            form.submit();
+          }}
+          loading={loading}
+        >
+          Change
+        </Button>
+      ),
+    }));
+  };
+
+  const PopOverContent = () => {
+    return (
+      <div>
+        {[
+          {
+            title: "Change Password",
+            onClick: () => handleChangePassword(),
+            icon: (
+              <Icon icon="mdi:password" width={22} height={22} className="" />
+            ),
+            classNames: {
+              text: "hover:cursor-pointer hover:bg-gray-50 text-gray-500 ",
+            },
+          },
+          {
+            title: "Logout",
+            onClick: () => handleLogout(),
+            icon: (
+              <Icon
+                icon="material-symbols:logout"
+                width={22}
+                height={22}
+                className="text-red-500"
+              />
+            ),
+            classNames: {
+              text: "hover:cursor-pointer hover:bg-red-50 text-red-500 ",
+            },
+          },
+        ].map(
+          (item: {
+            title: string;
+            onClick: () => void;
+            icon: ReactElement;
+            classNames?: {
+              text?: string;
+            };
+          }) => (
+            <span
+              key={item.title}
+              role="button"
+              tabIndex={0}
+              onClick={item.onClick}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  item.onClick();
+                }
+              }}
+              className={`flex items-center gap-3 py-2 px-6 font-bold rounded-md transition ${item?.classNames?.text}`}
+              title={item.title}
+            >
+              {item?.icon}
+              <span className="text-base font-medium">{item.title}</span>
+            </span>
+          ),
+        )}
+      </div>
+    );
+  };
+
   return (
     <>
       <div className="flex flex-col">
@@ -90,58 +180,7 @@ const Header = ({}: HeaderProps) => {
         <div className="relative">
           <Popover
             placement="bottom"
-            content={() => {
-              return (
-                <div>
-                  {[
-                    {
-                      title: "Logout",
-                      onClick: () => handleLogout(),
-                      icon: (
-                        <Icon
-                          icon="material-symbols:logout"
-                          width={22}
-                          height={22}
-                          className="text-red-500"
-                        />
-                      ),
-                      classNames: {
-                        text: "hover:cursor-pointer hover:bg-red-50 text-red-500 ",
-                      },
-                    },
-                  ].map(
-                    (item: {
-                      title: string;
-                      onClick: () => void;
-                      icon: ReactElement;
-                      classNames?: {
-                        text?: string;
-                      };
-                    }) => (
-                      <span
-                        key={item.title}
-                        role="button"
-                        tabIndex={0}
-                        onClick={item.onClick}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            item.onClick();
-                          }
-                        }}
-                        className={`flex items-center gap-3 py-2 px-6 font-bold rounded-md transition ${item?.classNames?.text}`}
-                        title={item.title}
-                      >
-                        {item?.icon}
-                        <span className="text-base font-medium">
-                          {item.title}
-                        </span>
-                      </span>
-                    ),
-                  )}
-                </div>
-              );
-            }}
+            content={PopOverContent}
             arrow={false}
             trigger="click"
             mouseEnterDelay={0}
