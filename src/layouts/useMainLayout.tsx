@@ -163,7 +163,7 @@ export const useMainLayout = ({ onLogout }: { onLogout?: () => void }) => {
 
     if (paths.includes("dashboard")) {
       return {
-        pageTitle: "Welcome, " + userData?.name,
+        pageTitle: "Welcome, " + userData?.name?.toUpperCase(),
         pageTitleDescription: "Overview of your account and recent activities",
         key: "1",
       };

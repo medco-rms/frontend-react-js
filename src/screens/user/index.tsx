@@ -1,7 +1,7 @@
 import { useUser } from "./useUser";
 import type { User, UserRole } from "@/assets/models";
 import { Table, UtilContext } from "react-project-scaffold-ts";
-import { USERS_QUERY } from "./gql";
+import { PROFILES_QUERY } from "./gql";
 import { useContext } from "react";
 import { Button, Form } from "antd";
 import { StaffForm } from "./form";
@@ -66,7 +66,7 @@ const Index = ({ role }: { role: UserRole }) => {
           "Search by User information (first name, middle name, email & phone number)"
         }
         route={{
-          api: USERS_QUERY(roleAlias),
+          api: PROFILES_QUERY(roleAlias),
           page: `/admin/${role.toLowerCase()}s`,
         }}
         queryParams={{ role: role ?? "DOCTOR" }}

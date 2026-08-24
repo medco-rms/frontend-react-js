@@ -38,16 +38,12 @@ export interface User {
   gender?: Gender;
   dateOfBirth?: Date;
 
-  profileImage?: string;
-
   // Contact Information
-  email?: string;
   phone?: string;
   alternativePhone?: string;
   address?: string;
 
   // Role & Organization
-  role?: UserRole;
   departmentId?: string;
   employeeId?: number;
 

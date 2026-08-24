@@ -15,7 +15,9 @@ const App = () => {
   // Set API Config for the application
   useEffect(() => {
     setAPIConfig({
-      endpoint: "http://localhost:3000",
+      endpoint: import.meta.env.DEV
+        ? "http://localhost:3000"
+        : "http://localhost:3000",
       type: "GRAPHQL",
       token: "",
     });

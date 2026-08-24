@@ -21,26 +21,26 @@ const Fields = `
     note
 `;
 
-export const USER_MUTATION = (isCreate: boolean) =>
+export const PROFILE_MUTATION = (isCreate: boolean) =>
   isCreate
     ? gql`
-        mutation CreateUser($input: CreateUserDto!) {
-          createUser(input: $input) {
+        mutation CreateProfile($input: CreateProfileDto!) {
+          createProfile(input: $input) {
             ${Fields}
           }
         }
       `
     : gql`
-        mutation UpdateUser($id: ID!, $input: UpdateUserDto!) {
-          updateUser(id: $id, input: $input) {
+        mutation UpdateProfile($id: ID!, $input: UpdateProfileDto!) {
+          updateProfile(id: $id, input: $input) {
             ${Fields}
           }
         }
       `;
 
-export const USERS_QUERY = (roleAlias: string) => gql`
-    query UsersByRole($role: String!) {
-      ${roleAlias}: filterUser(role: $role)  {
+export const PROFILES_QUERY = (roleAlias: string) => gql`
+    query ProfilesByRole($role: String!) {
+      ${roleAlias}: filterProfile(role: $role)  {
         id
         firstName
         middleName
@@ -55,9 +55,9 @@ export const USERS_QUERY = (roleAlias: string) => gql`
       }
     }
   `;
-export const USER_QUERY = gql`
-        query user($id: ID!) {
-          user(id: $id) {
+export const PROFILE_QUERY = gql`
+        query Profile($id: ID!) {
+          Profile(id: $id) {
             ${Fields}
           }
         }
