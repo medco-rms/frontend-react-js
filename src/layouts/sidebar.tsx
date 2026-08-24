@@ -16,17 +16,6 @@ const SideBar = ({
   const location = useLocation();
   const { setConfirmationModalProps: setcmProps } = useContext(CMContext);
 
-  const handleLogout = async () => {
-    setcmProps((prev: CMPropsType) => ({
-      ...prev,
-      content: "Are you sure want to log out from system ?",
-      okButtonText: "Yes, Proceed.",
-      cancelButtonText: "Nuh, Stay!",
-      onOk: async () => {},
-      show: true,
-    }));
-  };
-
   useEffect(() => {
     setcmProps((prev: CMPropsType) => ({
       ...prev,
@@ -35,7 +24,7 @@ const SideBar = ({
   }, []);
 
   const { navItems: menuItems, getPageContent } = useMainLayout({
-    onLogout: handleLogout,
+    onLogout: () => {},
   });
 
   const [collapsed, setCollapsed] = useState(false);

@@ -11,9 +11,11 @@ import {
   CMProvider,
   ConfirmationModal,
 } from "react-project-scaffold-ts";
+import { Toaster } from "react-hot-toast";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <Toaster position="top-center" />
     <ConfigProvider
       theme={{
         components: {

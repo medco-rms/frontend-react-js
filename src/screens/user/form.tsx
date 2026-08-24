@@ -10,7 +10,7 @@ import { staticImages } from "@/lib/static-images";
 import { useParams } from "react-router-dom";
 import { getRoleLabel } from ".";
 import dayjs from "dayjs";
-import { USER_MUTATION, USER_QUERY } from "./gql";
+import { PROFILE_MUTATION, PROFILE_QUERY } from "./gql";
 import type { FormInstance } from "antd";
 
 const Index = ({ role }: { role: UserRole }) => {
@@ -23,8 +23,8 @@ const Index = ({ role }: { role: UserRole }) => {
   const roleLabel = getRoleLabel(role ?? role);
 
   const { data: apiData, isLoading } = useApiQuery<User>(
-    [USER_QUERY],
-    USER_QUERY,
+    [PROFILE_QUERY],
+    PROFILE_QUERY,
     Boolean(id),
     { id },
   ) as {
@@ -47,7 +47,7 @@ const Index = ({ role }: { role: UserRole }) => {
         fields={getFormFields({ image, includeId: id ? true : false, role })}
         title={id ? `Edit ${roleLabel}` : `Create new ${roleLabel}`}
         backTo={`/admin/${role.toLowerCase()}s`}
-        apiRoute={USER_MUTATION(!id)}
+        apiRoute={PROFILE_MUTATION(!id)}
         payloadExtraData={{
           role: normalizedRole,
         }}
@@ -78,8 +78,8 @@ export const StaffForm = ({
   const [data, setData] = useState<any>(null);
 
   const { data: apiData, isLoading } = useApiQuery<User>(
-    [USER_QUERY],
-    USER_QUERY,
+    [PROFILE_QUERY],
+    PROFILE_QUERY,
     Boolean(id),
     { id },
   ) as {
@@ -105,7 +105,7 @@ export const StaffForm = ({
         })}
         title={id ? `Edit Staff` : `Create new Staff`}
         backTo="/admin/staffs"
-        apiRoute={USER_MUTATION(!id)}
+        apiRoute={PROFILE_MUTATION(!id)}
         payloadExtraData={{
           role: "STAFF",
         }}
