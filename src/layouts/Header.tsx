@@ -6,6 +6,7 @@ import {
   ChangePassword,
   CMContext,
   useAuthClient,
+  UserContext,
   UtilContext,
   type CMPropsType,
 } from "react-project-scaffold-ts";
@@ -25,6 +26,7 @@ const Header = ({}: HeaderProps) => {
   const currentPage: HeaderProps = getPageContent(location.pathname);
   const { setConfirmationModalProps: setcmProps } = useContext(CMContext);
   const { setDrawerProps } = useContext(UtilContext);
+  const { clearUserData } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
   const authClient = useAuthClient();
@@ -64,7 +66,11 @@ const Header = ({}: HeaderProps) => {
       okButtonText: "Yes, Proceed.",
       cancelButtonText: "Nuh, Stay!",
       onOk: async () => {
-        Logout({});
+        Logout({
+          onClear: () => {
+            clearUserData();
+          },
+        });
       },
       show: true,
     }));
