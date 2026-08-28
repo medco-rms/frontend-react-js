@@ -6,7 +6,7 @@ import {
   UserProfileInfo,
   useUtils,
 } from "react-project-scaffold-ts";
-import { type Gender, type Patient } from "../../assets/models";
+import { type Gender, type Patient } from "@/assets/models";
 
 export const usePatient = () => {
   const { GetFormattedIds, ServerDate } = useUtils({});
