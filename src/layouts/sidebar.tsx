@@ -5,13 +5,16 @@ import logo from "@/assets/images/logo.png";
 import { useMainLayout, type MenuItem } from "./useMainLayout";
 import type { HeaderProps } from "./Header";
 import { CMContext, type CMPropsType } from "react-project-scaffold-ts";
+import type { UserRole } from "@/assets/models";
 
 const SideBar = ({
   onCollapsed,
   onSelect,
+  role,
 }: {
   onCollapsed: (value: boolean) => void;
   onSelect: (value: HeaderProps) => void;
+  role: UserRole;
 }) => {
   const location = useLocation();
   const { setConfirmationModalProps: setcmProps } = useContext(CMContext);
@@ -25,6 +28,7 @@ const SideBar = ({
 
   const { navItems: menuItems, getPageContent } = useMainLayout({
     onLogout: () => {},
+    role,
   });
 
   const [collapsed, setCollapsed] = useState(false);
@@ -68,7 +72,7 @@ const SideBar = ({
   return (
     <>
       {/* Logo */}
-      <div className="flex items-center justify-start px-6 py-1 shadow-md ">
+      <div className="flex items-center justify-start px-6 py-1 shadow-md">
         <span>
           <img
             src={logo}
@@ -87,14 +91,19 @@ const SideBar = ({
       {/* Menu Items */}
       <nav className="mt-4 px-4">
         <ul className="space-y-2">
-          {menuItems.slice(0, -1).map((item: MenuItem) => (
-            <li key={item.key} title={item?.label}>
-              {row(item, "")}
+          {menuItems().map((item: MenuItem) => (
+            <li
+              key={item.key}
+              title={item?.label}
+              className={
+                item?.position === "bottom"
+                  ? `absolute bottom-8 left-0 w-full`
+                  : ""
+              }
+            >
+              {row(item, item?.position === "bottom" ? "px-4!" : "")}
             </li>
           ))}
-          <li className="absolute bottom-8 left-0 w-full">
-            {row(menuItems[menuItems.length - 1], "px-4!")}
-          </li>
         </ul>
       </nav>
 

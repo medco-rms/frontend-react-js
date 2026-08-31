@@ -1,16 +1,41 @@
-import { DEPARTMENTS_QUERY } from "@/screens/department/gql";
-import { ROOMS_QUERY } from "@/screens/room/gql";
+import { DEPARTMENTS_QUERY } from "@/screens/admin/department/gql";
+import { ROOMS_QUERY } from "@/screens/admin/room/gql";
 import { lazy } from "react";
 import { createElement } from "react";
 
-const Dashboard = lazy(() => import("@/screens/dashboard"));
-const Users = lazy(() => import("@/screens/user"));
-const UserForm = lazy(() => import("@/screens/user/form"));
-const Patients = lazy(() => import("@/screens/patient"));
-const PatientForm = lazy(() => import("@/screens/patient/form"));
-const SharedList = lazy(() => import("@/screens/shared/index"));
+// Admin routes
+const Dashboard = lazy(() => import("@/screens/admin/dashboard"));
+const Users = lazy(() => import("@/screens/admin/user"));
+const UserForm = lazy(() => import("@/screens/admin/user/form"));
+const Patients = lazy(() => import("@/screens/admin/patient"));
+const PatientForm = lazy(() => import("@/screens/admin/patient/form"));
+const SharedList = lazy(() => import("@/screens/admin/shared/index"));
 
-export const Index = [
+// staff routes
+const PharmacistDashboard = lazy(
+  () => import("@/screens/pharmacist/dashboard/index"),
+);
+const BrowsePatient = lazy(() => import("@/screens/staff/patient/browse"));
+const BrowseExamination = lazy(
+  () => import("@/screens/staff/examination/browse"),
+);
+const FormExamination = lazy(() => import("@/screens/staff/examination/form"));
+
+// pharmacist routes
+const BrowsePharmacyItem = lazy(
+  () => import("@/screens/pharmacist/pharmacy-item/browse"),
+);
+const FormPharmacyItem = lazy(
+  () => import("@/screens/pharmacist/pharmacy-item/form"),
+);
+const BrowsePrescription = lazy(
+  () => import("@/screens/pharmacist/prescription/browse"),
+);
+
+// Availability
+const Availability = lazy(() => import("@/screens/availability/index"));
+
+export const AdminRoutes = [
   {
     path: "dashboard",
     element: createElement(Dashboard),
@@ -110,5 +135,89 @@ export const Index = [
       },
       type: "room",
     }),
+  },
+];
+
+export const StaffRoutes = [
+  {
+    path: "dashboard",
+    element: createElement(Dashboard),
+  },
+  {
+    path: "patient/browse",
+    element: createElement(BrowsePatient),
+  },
+  {
+    path: "patient/new",
+    element: createElement(PatientForm),
+  },
+  {
+    path: "patient/:id/update",
+    element: createElement(PatientForm),
+  },
+  {
+    path: "examination/browse",
+    element: createElement(BrowseExamination),
+  },
+  {
+    path: "examination/new",
+    element: createElement(FormExamination),
+  },
+  {
+    path: "examination/:id/update",
+    element: createElement(FormExamination),
+  },
+];
+
+export const PharmacistRoutes = [
+  {
+    path: "dashboard",
+    element: createElement(PharmacistDashboard),
+  },
+  {
+    path: "pharmacy-item/browse",
+    element: createElement(BrowsePharmacyItem),
+  },
+  {
+    path: "pharmacy-item/new",
+    element: createElement(FormPharmacyItem),
+  },
+  {
+    path: "pharmacy-item/:id/update",
+    element: createElement(FormPharmacyItem),
+  },
+  {
+    path: "prescription/browse",
+    element: createElement(BrowsePrescription),
+  },
+];
+
+export const TechnicianRoutes = [
+  {
+    path: "dashboard",
+    element: createElement(Dashboard),
+  },
+  {
+    path: "examination/browse",
+    element: createElement(BrowseExamination),
+  },
+  {
+    path: "availability",
+    element: createElement(Availability),
+  },
+];
+
+export const DoctorRoutes = [
+  {
+    path: "dashboard",
+    element: createElement(Dashboard),
+  },
+  {
+    path: "examination/browse",
+    element: createElement(BrowseExamination),
+  },
+  {
+    path: "availability",
+    element: createElement(Availability),
   },
 ];

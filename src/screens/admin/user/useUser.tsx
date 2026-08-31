@@ -1,4 +1,4 @@
-import { type Gender, type UserRole } from "../../assets/models";
+import { type Gender, type UserRole } from "@/assets/models";
 import { Icon } from "@iconify-icon/react";
 import {
   type FieldConfig,
@@ -7,7 +7,7 @@ import {
   UserProfileInfo,
   useUtils,
 } from "react-project-scaffold-ts";
-import { type User } from "../../assets/models";
+import { type User } from "@/assets/models";
 
 export const useUser = () => {
   const { GetFormattedIds, ServerDate } = useUtils({});
@@ -26,7 +26,7 @@ export const useUser = () => {
             full_name={`${record?.firstName} ${record?.middleName ?? ""} ${
               record?.lastName ?? ""
             }`}
-            photoUrl={record.profileImage ?? ""}
+            photoUrl={record?.profileImage ?? ""}
             onClick={() => onClick?.(record)}
           />
         ),
