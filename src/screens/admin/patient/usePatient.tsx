@@ -40,7 +40,6 @@ export const usePatient = () => {
       key: "gender",
       render: (val?: Gender) => val || "-",
     },
-
     {
       title: "Phone #",
       dataIndex: "phone",

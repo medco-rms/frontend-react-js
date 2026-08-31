@@ -3,8 +3,8 @@ export type UserRole =
   | "TECHNICIAN"
   | "PHARMACIST"
   | "NURSE"
-  | "FRONT_DESK"
-  | "STAFF";
+  | "STAFF"
+  | "ADMIN";
 export type Gender = "MALE" | "FEMALE" | "OTHER";
 export type DepartmentType =
   | "EXAMINATION"
